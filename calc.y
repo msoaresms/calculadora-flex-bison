@@ -10,6 +10,7 @@
 
 %left SUBTRACAO ADICAO
 %left DIVISAO MULTIPLICACAO
+%left NEGATIVO
 
 %define parse.error verbose
 
@@ -29,6 +30,7 @@ Expressao: Expressao SUBTRACAO Expressao { $$ = $1 - $3; };
 Expressao: Expressao MULTIPLICACAO Expressao { $$ = $1 * $3; };
 Expressao: Expressao DIVISAO Expressao { $$ = $1 / $3; };
 Expressao: ESQUERDA Expressao DIREITA { $$ = $2; };
+Expressao: SUBTRACAO Expressao %prec NEGATIVO { $$ = -$2; };
 
 %%
 
