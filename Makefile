@@ -1,7 +1,7 @@
 calculadora: calc.y calc.l
 	bison -d calc.y
 	flex -o calc.lex.c calc.l
-	gcc -Wall -o calc calc.lex.c calc.tab.c -lfl -lm
+	gcc -o calc calc.lex.c calc.tab.c -lfl
 
 clean:
-	rm -rf calc
+	rm -f calc.lex.c calc.tab.c calc.tab.h
